@@ -2,7 +2,6 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 
 const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
-
 const ColorGame = () => {
   const [targetColor, setTargetColor] = useState("");
   const [score, setScore] = useState(0);
@@ -17,13 +16,14 @@ const ColorGame = () => {
   const startNewGame = () => {
     setTargetColor(getRandomColor());
     setStatus("Guess the correct color!");
+    setScore(0)
   };
 
   const handleGuess = (color) => {
     if (color === targetColor) {
       setScore(score + 1);
       setStatus("Correct! 🎉");
-      setTargetColor(getRandomColor()); // Change color immediately upon correct guess
+      setTargetColor(getRandomColor());
     } else {
       setStatus("Wrong! Try again.");
     }
