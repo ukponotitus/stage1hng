@@ -1,5 +1,6 @@
+import confetti from 'canvas-confetti';
 import './App.css';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
 const ColorGame = () => {
@@ -12,20 +13,29 @@ const ColorGame = () => {
   }, []);
 
   const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
-
   const startNewGame = () => {
     setTargetColor(getRandomColor());
     setStatus("Guess the correct color!");
-    setScore(0)
+    setScore(0);
   };
+
+  const celebrate = useCallback(() => {
+    confetti({
+      particleCount: 100,
+      spread: 70,
+      origin: { y: 0.6 },
+    });
+  }, []);
 
   const handleGuess = (color) => {
     if (color === targetColor) {
       setScore(score + 1);
       setStatus("Correct! 🎉");
+      celebrate();
       setTargetColor(getRandomColor());
     } else {
       setStatus("Wrong! Try again.");
+      setScore(0);
     }
   };
 
@@ -43,7 +53,6 @@ const ColorGame = () => {
             style={{ backgroundColor: color }}
             onClick={() => handleGuess(color)}
           >
-            {color.charAt(0).toUpperCase() + color.slice(1)}
           </button>
         ))}
       </div>

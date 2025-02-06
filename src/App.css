@@ -1,4 +1,3 @@
-/* General styles */
 .container {
   text-align: center;
   font-family: Arial, sans-serif;
@@ -11,13 +10,11 @@
   padding: 15px;
 }
 
-/* Game title */
 h1 {
   font-size: 2rem;
   color: #333;
 }
 
-/* Target color box */
 .color-box {
   width: 150px;
   height: 150px;
@@ -27,13 +24,11 @@ h1 {
   transition: background-color 0.3s ease-in-out;
 }
 
-/* Instructions */
 p[data-testid="gameInstructions"] {
   font-size: 1.2rem;
   color: #555;
 }
 
-/* Button container */
 .button-container {
   display: flex;
   flex-wrap: wrap;
@@ -42,7 +37,6 @@ p[data-testid="gameInstructions"] {
   margin: 20px 0;
 }
 
-/* Color buttons */
 .color-button {
   width: 100px;
   height: 50px;
@@ -58,21 +52,18 @@ p[data-testid="gameInstructions"] {
   opacity: 0.8;
 }
 
-/* Game status */
 p[data-testid="gameStatus"] {
   font-size: 1.4rem;
   font-weight: bold;
   margin: 10px 0;
 }
 
-/* Score */
 p[data-testid="score"] {
   font-size: 1.2rem;
   font-weight: bold;
   margin-bottom: 20px;
 }
 
-/* New game button */
 .new-game-button {
   background-color: #007bff;
   color: white;
@@ -88,7 +79,6 @@ p[data-testid="score"] {
   background-color: #0056b3;
 }
 
-/* Responsive Design */
 @media (max-width: 600px) {
   .button-container {
     flex-direction: column;
@@ -100,44 +90,3 @@ p[data-testid="score"] {
     height: 40px;
   }
 }
-
-
-
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
