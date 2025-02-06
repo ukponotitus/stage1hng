@@ -86,7 +86,7 @@ const ColorShadeGame = () => {
   return (
     <div className="container">
       <h1>Color Shades Guessing Game</h1>
-      <div data-testid="colorBox"  className="color-box" style={{ backgroundColor: targetShade }}></div>
+      <div data-testid="colorBox" className="color-box" style={{ backgroundColor: targetShade }}></div>
       <p data-testid="gameInstructions">Guess the correct shade of {targetColor}!</p>
       <div className="button-container">
         {currentShades.map((shade) => (
@@ -101,9 +101,9 @@ const ColorShadeGame = () => {
       </div>
       <p data-testid="gameStatus">{status}</p>
       <p data-testid="score">Score: {score}</p>
-      <button 
-        data-testid="newGameButton" 
-        className="new-game-button" 
+      <button
+        data-testid="newGameButton"
+        className="new-game-button"
         onClick={() => startNewGame(true)}
       >
         New Game

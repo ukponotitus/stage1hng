@@ -3,20 +3,29 @@ import './App.css';
 import React, { useState, useEffect, useCallback } from "react";
 
 const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+
+const shuffleColors = (colorsArray) => {
+  return [...colorsArray].sort(() => Math.random() - 0.5);
+};
+
 const ColorGame = () => {
   const [targetColor, setTargetColor] = useState("");
   const [score, setScore] = useState(0);
   const [status, setStatus] = useState("");
+  const [shuffledColors, setShuffledColors] = useState(colors);
 
   useEffect(() => {
     startNewGame();
   }, []);
 
   const getRandomColor = () => colors[Math.floor(Math.random() * colors.length)];
+
   const startNewGame = () => {
-    setTargetColor(getRandomColor());
+    const newTarget = getRandomColor();
+    setTargetColor(newTarget);
     setStatus("Guess the correct color!");
     setScore(0);
+    setShuffledColors(shuffleColors(colors));
   };
 
   const celebrate = useCallback(() => {
@@ -32,7 +41,9 @@ const ColorGame = () => {
       setScore(score + 1);
       setStatus("Correct! 🎉");
       celebrate();
-      setTargetColor(getRandomColor());
+      const newTarget = getRandomColor();
+      setTargetColor(newTarget);
+      setShuffledColors(shuffleColors(colors));
     } else {
       setStatus("Wrong! Try again.");
       setScore(0);
@@ -45,7 +56,7 @@ const ColorGame = () => {
       <div data-testid="colorBox" className="color-box" style={{ backgroundColor: targetColor }}></div>
       <p data-testid="gameInstructions">Guess the correct color!</p>
       <div className="button-container">
-        {colors.map((color) => (
+        {shuffledColors.map((color) => (
           <button
             key={color}
             data-testid="colorOption"
